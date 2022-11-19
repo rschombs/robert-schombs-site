@@ -278,3 +278,12 @@ p {
     justify-content: space-evenly;
     margin-top: 10px;
 }
+
+#cornell-logo {
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+.active {
+    scale: 1.1;
+}
