@@ -17,16 +17,11 @@
     <title>Robert Schombs</title>
 </head>
 <body>
-<!--     <header>
-        <a href="">HOME</a>
-        <a href="">TUTORING</a>
-        <a href="">CONTACT</a>
-    </header> -->
     <div class="charsheet">
         <div class="box" id="name">
             <div class="name-section">
                 <i class="fa-brands fa-d-and-d fa-6x" id="dnd-icon" style="color:#a5151c"></i>
-                <div class="entry" id="name-box">Robert Schombs</div>
+                <div class="entry glowing" id="name-box">Robert Schombs</div>
                 <div class="label" id="name-label">Character Name</div>
             </div>
             <img width="100" src="./assets/images/portrait-thumb.jpg">
@@ -36,7 +31,7 @@
             <div class="entry" id="info-box-1">Tutor 11/Founder 7/Web Developer 1</div>
             <div class = "label" id="class-level">Class & Level</div>
             <div class="entry" id="info-box-3">New Jersey</div>
-            <div class="entry" id="info-box-4">Neutral Good</div>
+            <div class="entry clickable" id="info-box-4">Neutral Good</div>
             <div class="entry" id="info-box-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6082</div>
             <div class="label">Location</div>
             <div class="label">Alignment</div>
@@ -133,11 +128,12 @@
             <div class="title">SIDE QUESTS</div>
             <div class="list">Family, Reading, Hockey, Gaming, D&D</div>
             <div class="title">ANIMAL COMPANION</div>
-            <div class="list">Mr. Pibb the Beagle</div>
+            <div class="list clickable" id="beagle">Mr. Pibb the Beagle</div>
             <div class="title">CONTACT</div>
             <div class="icon-container">
                 <i class="fa-brands fa-square-twitter fa-4x" style="color:#1DA1F2"></i>
                 <i class="fa-regular fa-paper-plane fa-4x" style="color:#25292c"></i>
+                <img id='torch-out' src="./assets/images/torch-out.png">
             </div>
             
         </div>
@@ -147,7 +143,10 @@
             <div class="label">Intelligence</div>
         </div>
         <div class="box" id="education">
-            <img src="./assets/images/CU-crop.png" id="cornell-logo">
+            <div class="logo-wrapper">
+                <i class="fa-solid fa-circle-play fa-5x hidden"></i>
+                <img class='hoverable' src="./assets/images/CU-crop.png" id="cornell-logo">
+            </div>
             <span class="emphasis">2011 Master of Arts</span>
             <p>Science & Technology Studies</p>
             <span class="emphasis">2006 Bachelor of Arts</span>
@@ -165,6 +164,9 @@
         </div>
 
     </div>
-    
+    <div class="modal hidden-modal">
+        <img class="hidden-modal" id="full-pic" src="./assets/images/full-pic.jpg">
+        <img class="hidden-modal" id="pibb-pic" src="./assets/images/pibb-thumb.jpg">
+    </div>  
 </body>
 </html>
