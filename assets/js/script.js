@@ -67,8 +67,25 @@ pibbClicker.addEventListener('click', (e) => {
 
 const torch = document.querySelector('#torch-out');
 const body = document.body;
+const darkness = document.querySelector('.darkness');
 torch.addEventListener('click', (e) => {
     torch.style.opacity = 0;
+    setTimeout(function() {
+    body.style.backgroundColor = 'white'}, 200);
     body.classList.add('torch-cursor');
     torchSound.play();
+    torchSound.volume = .2;
+    darkness.classList.remove('lights-on');
+    document.addEventListener('pointermove', (pos) => {
+  
+        // Calculate mouse position in percentages.
+        let x = parseInt( pos.clientX / window.innerWidth * 100 );
+        let y = parseInt( pos.clientY / window.innerHeight * 100 );
+      
+        // Update the custom property values on the body.
+        darkness.style.setProperty('--mouse-x', x + '%');
+        darkness.style.setProperty('--mouse-y', y + '%'); 
+      
+    });
 })
+
