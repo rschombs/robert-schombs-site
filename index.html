@@ -12,7 +12,7 @@
     <link href="./assets/css/brands.css" rel="stylesheet">
     <link href="./assets/css/solid.css" rel="stylesheet">
     <link href="./assets/css/regular.css" rel="stylesheet">
-    <script src="./assets/js/script.js" defer></script>
+    <script type="module" src="./assets/js/script.js" defer></script>
 
     <title>Robert Schombs</title>
 </head>
@@ -133,7 +133,7 @@
             <div class="icon-container">
                 <a href="https://twitter.com/robertschombs" target="_blank"><i class="fa-brands fa-square-twitter fa-4x hoverable" style="color:#1DA1F2"></i></a>
                 <i class="fa-regular fa-paper-plane fa-4x hoverable" style="color:#25292c"></i>
-                <img id='torch-out' src="./assets/images/torch-out.png">
+                <img class='hoverable' id='torch-out' src="./assets/images/torch-out.png">
             </div>
             
         </div>
@@ -159,7 +159,7 @@
         </div>
         <div class="box stat" id="cha">
             <i class="fa-solid fa-eye fa-5x" id="atr-icon" style="color:#7912a1"></i>
-            <div class="attribute">14</div>
+            <div class="attribute">13</div>
             <div class="label">Charisma</div>
         </div>
 
@@ -181,8 +181,11 @@
                 <span style="font-size: 22px; color: rgb(31, 29, 29);">(View on desktop/laptop for best results)</span>
             </div>
         </div>
+        <div class="attr-popup hidden-modal">
+            <div class="bullet-container"></div>
+        </div>
     </body>
     </div>  
     <div class="darkness lights-on"></div>
-
+    
 </html>

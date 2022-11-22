@@ -1,7 +1,17 @@
+import { plusMinus } from './attributes.js'
+
 let musicPlaying = false
 
 const cornellMp3 = new Audio('./assets/audio/almamater.mp3');
 const torchSound = new Audio('./assets/audio/torch-sound.mp3')
+
+const xp = document.querySelector('#info-box-5')
+const bd = new Date(1984, 8, 27)
+const td = new Date();
+let ttime= td.getTime();
+let btime = bd.getTime();
+let diff = Math.round((ttime - btime)/(1000*60*60*24));
+xp.textContent = diff
 
 cornellMp3.addEventListener('ended', () => {
         cornellMp3.currentTime = 0
@@ -52,11 +62,16 @@ modal.addEventListener('click', (e) => {
     modal.classList.toggle('hidden-modal');
     charsheet.classList.remove('blur');
     const targetToRemove = document.querySelectorAll('.activated');
-    console.log(targetToRemove);
+    const bulletRemove = document.querySelectorAll('.bullet')
     targetToRemove.forEach((item) => {
         item.classList.add('hidden-modal');
         item.classList.remove('activated');
     })
+    bulletRemove.forEach((item) => {
+        item.remove();
+    })
+    const title = document.querySelector('#targetTitle');
+    if (title) title.remove();
 })
 
 const pibbClicker = document.querySelector('#beagle');
@@ -109,12 +124,45 @@ nameBox.addEventListener('click', (e) => {
     bioTitle.classList.toggle('activated');
 })
 
-const attributePopup = (id) => {
-    console.log(id);
+const attrPopup = document.querySelector('.attr-popup');
+const bulletContainer = document.querySelector('.bullet-container')
+const handleAttribute = (e) => {
+    modal.classList.toggle('hidden-modal');
+    charsheet.classList.add('blur');
+    attrPopup.classList.toggle('hidden-modal')
+    attrPopup.classList.toggle('activated');
+    const attrID = e.currentTarget.id;
+    const title = document.createElement('div');
+    title.classList.add('popup-title');
+    title.setAttribute('id', 'targetTitle');
+    title.textContent = plusMinus[attrID].title;
+    attrPopup.prepend(title);
+    plusMinus[attrID].positives.forEach((positive) => {
+        const tick = document.createElement('i');
+        tick.classList = 'fa-solid fa-plus';
+        tick.style.color = '#0e771d'
+        const bullet = document.createElement('div');
+        bullet.classList.add('bullet');
+        bulletContainer.append(bullet);
+        const text = document.createTextNode(positive);
+        bullet.append(tick);
+        bullet.append(text);
+    })
+
+    plusMinus[attrID].negatives.forEach((negative) => {
+        const tick = document.createElement('i');
+        tick.classList = 'fa-solid fa-minus';
+        tick.style.color = '#a5151c'
+        const bullet = document.createElement('div');
+        bullet.classList.add('bullet');
+        bulletContainer.append(bullet);
+        const text = document.createTextNode(negative);
+        bullet.append(tick);
+        bullet.append(text);
+    })
 }
 
-const stat = document.querySelectorAll('.stat');
-console.log(stat);
-stat.forEach((stat) => {
-    stat.addEventListener('click', (e) => attributePopup(e.currentTarget.id))
+const attributes = document.querySelectorAll('.stat')
+attributes.forEach((attribute) => {
+    attribute.addEventListener('click', (e) => handleAttribute(e));
 })
