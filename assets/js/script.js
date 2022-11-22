@@ -3,6 +3,13 @@ let musicPlaying = false
 const cornellMp3 = new Audio('./assets/audio/almamater.mp3');
 const torchSound = new Audio('./assets/audio/torch-sound.mp3')
 
+cornellMp3.addEventListener('ended', () => {
+        cornellMp3.currentTime = 0
+        musicPlaying = false;
+        playIcon.classList.toggle('fa-circle-play');
+        playIcon.classList.toggle('fa-circle-pause');
+})
+
 const almaMater = document.getElementById('cornell-logo');
 almaMater.addEventListener('click', (e) => {
     if (musicPlaying == false) {
@@ -13,7 +20,6 @@ almaMater.addEventListener('click', (e) => {
 
     } else {
         cornellMp3.pause();
-        cornellMp3.currentTime = 0
         musicPlaying = false;
         playIcon.classList.toggle('fa-circle-play');
         playIcon.classList.toggle('fa-circle-pause');
@@ -45,14 +51,12 @@ bioPic.addEventListener('click', (e) => {
 modal.addEventListener('click', (e) => {
     modal.classList.toggle('hidden-modal');
     charsheet.classList.remove('blur');
-    const targetToRemove = document.querySelector('.activated');
-    targetToRemove.classList.toggle('hidden-modal');
-    targetToRemove.classList.toggle('activated');
-})
-
-const nameBox = document.querySelector('#name-box');
-nameBox.addEventListener('click', (e) => {
-    nameBox.classList.remove('glowing');
+    const targetToRemove = document.querySelectorAll('.activated');
+    console.log(targetToRemove);
+    targetToRemove.forEach((item) => {
+        item.classList.add('hidden-modal');
+        item.classList.remove('activated');
+    })
 })
 
 const pibbClicker = document.querySelector('#beagle');
@@ -89,3 +93,28 @@ torch.addEventListener('click', (e) => {
     });
 })
 
+const nameBox = document.querySelector('#name-box');
+const bio = document.querySelector('#bio-text')
+const popup = document.querySelector('.popup')
+const bioTitle = document.querySelector('#bio-title') 
+nameBox.addEventListener('click', (e) => {
+    modal.classList.toggle('hidden-modal');
+    bio.classList.toggle('hidden-modal')
+    popup.classList.toggle('hidden-modal')
+    bioTitle.classList.toggle('hidden-modal')
+    charsheet.classList.add('blur');
+    nameBox.classList.remove('glowing');
+    bio.classList.toggle('activated');
+    popup.classList.toggle('activated');
+    bioTitle.classList.toggle('activated');
+})
+
+const attributePopup = (id) => {
+    console.log(id);
+}
+
+const stat = document.querySelectorAll('.stat');
+console.log(stat);
+stat.forEach((stat) => {
+    stat.addEventListener('click', (e) => attributePopup(e.currentTarget.id))
+})
