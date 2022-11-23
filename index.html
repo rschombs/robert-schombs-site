@@ -28,10 +28,10 @@
 
         </div>
         <div class="box" id="info">
-            <div class="entry" id="info-box-1">Tutor 11/Founder 7/Web Developer 1</div>
+            <div class="entry clickable" id="info-box-1">Tutor 11/Founder 7/Web Developer 1</div>
             <div class = "label" id="class-level">Class & Level</div>
             <div class="entry" id="info-box-3">New Jersey</div>
-            <div class="entry clickable" id="info-box-4">Neutral Good</div>
+            <div class="entry" id="info-box-4">Neutral Good</div>
             <div class="entry" id="info-box-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6082</div>
             <div class="label">Location</div>
             <div class="label">Alignment</div>
@@ -132,7 +132,7 @@
             <div class="title">CONTACT</div>
             <div class="icon-container">
                 <a href="https://twitter.com/robertschombs" target="_blank"><i class="fa-brands fa-square-twitter fa-4x hoverable" style="color:#1DA1F2"></i></a>
-                <i class="fa-regular fa-paper-plane fa-4x hoverable" style="color:#25292c"></i>
+                <i class="fa-regular fa-paper-plane fa-4x hoverable email-click" style="color:#25292c"></i>
                 <img class='hoverable' id='torch-out' src="./assets/images/torch-out.png">
             </div>
             
@@ -170,15 +170,20 @@
         <div class="popup hidden-modal">
             <div class='popup-text hidden-modal' id="bio-text">
                 <div class="popup-title hidden-modal" id="bio-title">Welcome to my webzone</div>
-                Thanks for visiting!
-                <br> <br>
-                Check out my Dungeons-&-Dragons-style "character sheet" to learn more about me and what I do.
-                <br><br>    
-                Poke around and see what you find.
-                <br><br>
-                But remember -- take care in the dark.
-                <br><br>
+                <div class="popup-text-line">Thanks for visiting!</div>
+                <div class="popup-text-line">Check out my Dungeons-&-Dragons-style "character sheet" to learn more about me and what I do.</div>
+                <div class="popup-text-line">Poke around and see what you find.</div>
+                <div class="popup-text-line">But remember -- take care in the dark.</div>
                 <span style="font-size: 22px; color: rgb(31, 29, 29);">(View on desktop/laptop for best results)</span>
+            </div>
+            <div class='popup-text hidden-modal' id="class-text">
+                <div class="popup-title hidden-modal" id="jobs-title" style="font-size: 40px;">My Work & Years Experience</div>
+                <div class="popup-text-line">Though I have been tutoring students one-on-one since high school, I started tutoring professionally in 2011.</div>
+                <div class="popup-text-line">I founded REASON PREP, a test prep company, in 2015. It was acquired in 2019.</div>
+                <div class="popup-text-line">I've always loved computers, but I began seriously studying web development this year.</div>
+            </div>
+            <div class='email-popup hidden-modal' id="email-popup">
+                <div class="popup-title hidden-modal" id="email-title" style="font-size: 40px;">CONTACT ME</div>
             </div>
         </div>
         <div class="attr-popup hidden-modal">
@@ -187,5 +192,4 @@
     </body>
     </div>  
     <div class="darkness lights-on"></div>
-    
 </html>

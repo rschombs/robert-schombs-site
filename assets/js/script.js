@@ -74,6 +74,8 @@ modal.addEventListener('click', (e) => {
     if (title) title.remove();
     const background = document.querySelector('.background-icon');
     if (background) background.remove();
+    const email = document.querySelector('#email-text');
+    if (email) email.remove();
 })
 
 const pibbClicker = document.querySelector('#beagle');
@@ -124,6 +126,45 @@ nameBox.addEventListener('click', (e) => {
     bio.classList.toggle('activated');
     popup.classList.toggle('activated');
     bioTitle.classList.toggle('activated');
+})
+
+const jobs = document.querySelector('#info-box-1');
+const classText = document.querySelector('#class-text')
+const jobsTitle = document.querySelector('#jobs-title') 
+jobs.addEventListener('click', (e) => {
+    modal.classList.toggle('hidden-modal');
+    classText.classList.toggle('hidden-modal')
+    popup.classList.toggle('hidden-modal')
+    jobsTitle.classList.toggle('hidden-modal')
+    charsheet.classList.add('blur');
+    classText.classList.toggle('activated');
+    popup.classList.toggle('activated');
+    jobsTitle.classList.toggle('activated');
+})
+
+const email = document.querySelector('.email-click');
+const emailText = document.querySelector('#email-popup')
+const emailTitle = document.querySelector('#email-title') 
+email.addEventListener('click', (e) => {
+    modal.classList.toggle('hidden-modal');
+    emailText.classList.toggle('hidden-modal')
+    popup.classList.toggle('hidden-modal')
+    emailTitle.classList.toggle('hidden-modal')
+    charsheet.classList.add('blur');
+    emailText.classList.toggle('activated');
+    const a = 'rob';
+    const b = '@';
+    const c = 'reason';
+    const d = 'prep';
+    const f = '.';
+    const g = 'com';
+    const full = document.createElement('div');
+    full.classList.add('popup-text-line');
+    full.setAttribute('id', 'email-text');
+    full.textContent = a + b + c + d + f + g;
+    emailText.append(full);
+    popup.classList.toggle('activated');
+    emailTitle.classList.toggle('activated');
 })
 
 const iconObj = { str: ["fa-solid", "fa-hand-fist"], dex: ["fa-solid", "fa-wind"], con: ["fa-solid", "fa-heart"], int: ["fa-solid", "fa-hat-wizard"], wis: ["fa-solid", "fa-scale-balanced"], cha: ["fa-solid", "fa-eye"] }
