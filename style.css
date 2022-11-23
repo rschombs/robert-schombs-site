@@ -452,12 +452,14 @@ img {
 }
 
 .attr-popup {
+    position: relative;
     max-width: 600px;
     background-color: rgb(252, 245, 236);
     transition: opacity .4s;
     padding: 40px;
     border-radius: 6%;
     border: 3px solid grey;
+    font-size: 200px;
 }
 
 .popup-text {
@@ -479,4 +481,14 @@ img {
 
 .bullet > i {
     margin-right: 20px;
+}
+
+.background-icon {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: .12;
 }

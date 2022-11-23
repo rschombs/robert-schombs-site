@@ -72,6 +72,8 @@ modal.addEventListener('click', (e) => {
     })
     const title = document.querySelector('#targetTitle');
     if (title) title.remove();
+    const background = document.querySelector('.background-icon');
+    if (background) background.remove();
 })
 
 const pibbClicker = document.querySelector('#beagle');
@@ -124,6 +126,15 @@ nameBox.addEventListener('click', (e) => {
     bioTitle.classList.toggle('activated');
 })
 
+const iconObj = { str: ["fa-solid", "fa-hand-fist"], dex: ["fa-solid", "fa-wind"], con: ["fa-solid", "fa-heart"], int: ["fa-solid", "fa-hat-wizard"], wis: ["fa-solid", "fa-scale-balanced"], cha: ["fa-solid", "fa-eye"] }
+
+const colorObj = { 
+    dex: "#239ebd", 
+    con: "#a5151c", 
+    int: "#0e771d", 
+    wis: "#2d53d1", 
+    cha: "#7912a1" }
+
 const attrPopup = document.querySelector('.attr-popup');
 const bulletContainer = document.querySelector('.bullet-container')
 const handleAttribute = (e) => {
@@ -132,6 +143,11 @@ const handleAttribute = (e) => {
     attrPopup.classList.toggle('hidden-modal')
     attrPopup.classList.toggle('activated');
     const attrID = e.currentTarget.id;
+    const bgIcon = document.createElement('i');
+    bgIcon.classList.add(...iconObj[attrID]);
+    bgIcon.classList.add('background-icon');
+    if (attrID !== str) bgIcon.style.color = colorObj[attrID];
+    attrPopup.append(bgIcon);
     const title = document.createElement('div');
     title.classList.add('popup-title');
     title.setAttribute('id', 'targetTitle');
