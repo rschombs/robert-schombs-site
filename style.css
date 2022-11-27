@@ -22,7 +22,7 @@ header a {
     font-size: 30px;
 }
 
-p {
+#education p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: right;
     margin: 5px 0 20px;
@@ -509,4 +509,79 @@ img {
     font-family:'Times New Roman', Times, serif;
     margin-top: 25px;
     font-size: 36px;
+}
+
+.main-area{
+    max-width: 1200px;
+    width: 100%;
+    border: 2px solid tan;
+    border-radius: 1%;
+    margin-top: 3px;
+    padding: 20px 40px 40px;
+    background-color: rgb(230, 217, 201);
+    transition-duration: .4s;
+    box-sizing: border-box;
+}
+
+.main-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+    background-color:rgb(206, 205, 205);
+    border: .2px dashed grey;
+    border-radius: 5%;
+    margin: 20px 120px 40px;
+    padding: 15px 0;
+}
+
+article {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    border: 1px solid rgb(110, 109, 109);
+    border-radius: 3%;
+    background-color: rgb(252, 245, 236);
+    padding: 20px;
+}
+
+iframe.tutoring{
+    display: block;
+    margin: 0 auto;
+}
+
+.subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    align-self:center;
+    background-color:rgb(206, 205, 205);
+    border: .2px dashed grey;
+    border-radius: 5%;
+    padding: 2px 15px;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.go-home {
+    font-family: 'IM Fell English SC', serif;
+    text-align: center;
+    font-size: 34px;
+    display: block;
+    margin: 30px 0 20px;
+}
+
+li {
+    margin: 15px;
+}
+
+article > p {
+    margin-left: 20px;
+}
+
+article > img {
+    margin: 0 auto;
+    display: block;
+    width: 400px;
 }
