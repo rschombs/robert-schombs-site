@@ -401,8 +401,9 @@ img {
 .hidden-modal {
     opacity: 0;
     max-height: 0;
-    max-width: 0;
-    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 0 !important;
+    padding: 0px !important;
     border: none !important;
 }
 
@@ -478,7 +479,7 @@ img {
     padding: 40px;
     border-radius: 6%;
     border: 3px solid grey;
-    font-size: 200px;
+    font-size: 20px;
 }
 
 .popup-text {
@@ -505,6 +506,10 @@ img {
 
 .bullet > i {
     margin-right: 20px;
+}
+
+#jobs-title {
+    font-size: 40px;
 }
 
 .background-icon {
@@ -776,6 +781,53 @@ article > img {
     .clickable {
         text-decoration: underline;
         color: rgb(33, 33, 245)
-    }
+    }    
     
+}
+
+@media screen and (max-width: 450px) {
+    .charsheet {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 0;
+    }
+
+    .stat {
+        width: 125px;
+    }
+
+    .logo-wrapper {
+        width: 50%;
+    }
+
+    .popup-title {
+        font-size: 30px;
+    }
+
+    .popup-text-line {
+        font-size: 16px;
+    }
+
+    .popup {
+        width: 300px;
+        padding: 20px;
+    }
+
+    #jobs-title {
+        font-size: 30px;
+    }
+
+    .attr-popup {
+        margin: 30px;
+    }
+
+    .modal > img {
+        width: 90%;
+    }
+
 }
