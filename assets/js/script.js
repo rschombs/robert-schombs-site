@@ -4,6 +4,7 @@ let musicPlaying = false
 
 const cornellMp3 = new Audio('./assets/audio/almamater.mp3');
 const torchSound = new Audio('./assets/audio/torch-sound.mp3')
+const locked = new Audio ('./assets/audio/locked.mp3');
 
 const xp = document.querySelector('#info-box-5')
 const bd = new Date(1984, 8, 27)
@@ -11,7 +12,7 @@ const td = new Date();
 let ttime= td.getTime();
 let btime = bd.getTime();
 let diff = Math.round((ttime - btime)/(1000*60*60*24));
-xp.textContent = diff
+if (xp) xp.textContent = diff;
 
 cornellMp3.addEventListener('ended', () => {
         cornellMp3.currentTime = 0
@@ -86,30 +87,6 @@ pibbClicker.addEventListener('click', (e) => {
     charsheet.classList.add('blur');
     pibbPic.classList.toggle('hidden-modal');
     pibbPic.classList.toggle('activated');
-})
-
-const torch = document.querySelector('#torch-out');
-const body = document.body;
-const darkness = document.querySelector('.darkness');
-torch.addEventListener('click', (e) => {
-    torch.style.opacity = 0;
-    setTimeout(function() {
-    body.style.backgroundColor = 'white'}, 200);
-    body.classList.add('torch-cursor');
-    torchSound.play();
-    torchSound.volume = .2;
-    darkness.classList.remove('lights-on');
-    document.addEventListener('pointermove', (pos) => {
-  
-        // Calculate mouse position in percentages.
-        let x = parseInt( pos.clientX / window.innerWidth * 100 );
-        let y = parseInt( pos.clientY / window.innerHeight * 100 );
-      
-        // Update the custom property values on the body.
-        darkness.style.setProperty('--mouse-x', x + '%');
-        darkness.style.setProperty('--mouse-y', y + '%'); 
-      
-    });
 })
 
 const nameBox = document.querySelector('#name-box');
@@ -223,3 +200,132 @@ const attributes = document.querySelectorAll('.stat')
 attributes.forEach((attribute) => {
     attribute.addEventListener('click', (e) => handleAttribute(e));
 })
+
+const subjects = document.querySelector('#subjects');
+const tutoringMessage = document.querySelector('#tutoring-message');
+subjects.addEventListener('mouseover', () => {
+    tutoringMessage.classList.add('tutoring-message')
+    tutoringMessage.textContent = "Click here to learn more!"
+})
+
+subjects.addEventListener('mouseout', () => {
+    tutoringMessage.classList.remove('tutoring-message')
+    tutoringMessage.textContent = '\xa0'
+})
+
+let x, y; 
+
+const torchOn = (pos) => {
+            // Calculate mouse position in percentages.
+            x = parseInt( pos.clientX / window.innerWidth * 100 );
+            y = parseInt( pos.clientY / window.innerHeight * 100 );
+          
+            // Update the custom property values on the body.
+            darkness.style.setProperty('--mouse-x', x + '%');
+            darkness.style.setProperty('--mouse-y', y + '%');
+}
+
+const exit = document.querySelector('.exit');
+exit.addEventListener('mouseover', () => {
+    document.removeEventListener('pointermove', torchOn);
+    darkness.classList.toggle('darkness-total');
+    darkness.classList.toggle('darkness');
+})
+
+exit.addEventListener('mouseout', () => {
+    document.addEventListener('pointermove', torchOn); 
+    darkness.classList.toggle('darkness-total');
+    darkness.classList.toggle('darkness');
+})
+
+exit.addEventListener('click', () => {
+    if (document.querySelector('.game-text')) darkness.removeChild(document.querySelector('.game-text'));
+    charsheet.style.pointerEvents = "all";
+    door.style.pointerEvents = "all";
+    door.classList.toggle('lights-on')
+    torch.style.opacity = 1;
+    body.style.backgroundColor = 'black';
+    body.classList.remove('torch-cursor');
+    torchSound.pause();
+    torchSound.currentTime = 0;
+    dread.pause();
+    dread.currentTime = 0;
+    darkness.classList.add('lights-on');
+    
+})
+
+const torch = document.querySelector('#torch-out');
+const body = document.body;
+const door = document.querySelector('#door-pic');
+const darkness = document.querySelector('.darkness');
+torch.addEventListener('click', (e) => {
+    charsheet.style.pointerEvents = "none";
+    torch.style.opacity = 0;
+    setTimeout(function() {
+        body.style.backgroundColor = 'white'}, 200);
+    body.classList.add('torch-cursor');
+    torchSound.play();
+    torchSound.volume = .4;
+    darkness.classList.remove('lights-on');
+    setTimeout(function() {
+        door.classList.toggle('lights-on');}, 200);
+    document.addEventListener('pointermove', torchOn); 
+})
+
+const dread = new Audio('./assets/audio/dread.mp3');
+
+function playDread() {
+    dread.play();
+}
+
+door.addEventListener('mouseover', (e) => {
+    cornellMp3.pause();
+    musicPlaying = false;
+    playIcon.classList.toggle('fa-circle-play');
+    playIcon.classList.toggle('fa-circle-pause');
+    playDread();
+});
+
+const text1 = "The door is locked, the key lost decades ago.";
+const text2 = "Pray that it is never found...";
+const text3 = "[COMING SOON]";
+
+
+const delay = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+  }
+
+async function typeWriter(text, target) {    
+    let i = 0;
+    while (i < text.length) {
+      document.querySelector(target).innerHTML += text.charAt(i);
+      i++;
+      await delay(50);
+    }
+      await delay(500);
+  }
+
+door.addEventListener('click', async () => {
+    locked.play();
+    door.style.pointerEvents = "none";
+    const textMessage = document.createElement('div');
+    textMessage.classList.toggle('game-text');
+    darkness.append(textMessage);
+    const m1 = document.createElement('p');
+    textMessage.append(m1);
+    m1.setAttribute('id', 'm1');
+    await typeWriter(text1, '#m1')
+    const m2 = document.createElement('p');
+    textMessage.append(m2);
+    m2.setAttribute('id', 'm2');
+    await typeWriter(text2, '#m2')
+    const m3 = document.createElement('p');
+    textMessage.append(m3);
+    m3.setAttribute('id', 'm3');
+    await typeWriter(text3, '#m3')
+    await delay (1000);
+    textMessage.classList.add('fade-out');
+    await delay (1000);
+    darkness.removeChild(textMessage);
+    door.style.pointerEvents = "all";
+});
