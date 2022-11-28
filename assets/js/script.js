@@ -144,14 +144,32 @@ email.addEventListener('click', (e) => {
     emailTitle.classList.toggle('activated');
 })
 
-const iconObj = { str: ["fa-solid", "fa-hand-fist"], dex: ["fa-solid", "fa-wind"], con: ["fa-solid", "fa-heart"], int: ["fa-solid", "fa-hat-wizard"], wis: ["fa-solid", "fa-scale-balanced"], cha: ["fa-solid", "fa-eye"] }
+const iconObj = { 
+    str: ["fa-solid", "fa-hand-fist"], 
+    dex: ["fa-solid", "fa-wind"], 
+    con: ["fa-solid", "fa-heart"], 
+    int: ["fa-solid", "fa-hat-wizard"], 
+    wis: ["fa-solid", "fa-scale-balanced"], 
+    cha: ["fa-solid", "fa-eye"],
+    str2: ["fa-solid", "fa-hand-fist"], 
+    dex2: ["fa-solid", "fa-wind"], 
+    con2: ["fa-solid", "fa-heart"], 
+    int2: ["fa-solid", "fa-hat-wizard"], 
+    wis2: ["fa-solid", "fa-scale-balanced"], 
+    cha2: ["fa-solid", "fa-eye"], }
 
 const colorObj = { 
     dex: "#239ebd", 
     con: "#a5151c", 
     int: "#0e771d", 
     wis: "#2d53d1", 
-    cha: "#7912a1" }
+    cha: "#7912a1",
+    dex2: "#239ebd", 
+    con2: "#a5151c", 
+    int2: "#0e771d", 
+    wis2: "#2d53d1", 
+    cha2: "#7912a1",
+ }
 
 const attrPopup = document.querySelector('.attr-popup');
 const bulletContainer = document.querySelector('.bullet-container')
@@ -161,6 +179,7 @@ const handleAttribute = (e) => {
     attrPopup.classList.toggle('hidden-modal')
     attrPopup.classList.toggle('activated');
     const attrID = e.currentTarget.id;
+    console.log(attrID);
     const bgIcon = document.createElement('i');
     bgIcon.classList.add(...iconObj[attrID]);
     bgIcon.classList.add('background-icon');
