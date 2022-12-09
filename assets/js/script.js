@@ -1,5 +1,3 @@
-import { plusMinus } from './attributes.js'
-
 let musicPlaying = false
 
 const cornellMp3 = new Audio('./assets/audio/almamater.mp3');
@@ -23,7 +21,7 @@ cornellMp3.addEventListener('ended', () => {
 
 const almaMater = document.getElementById('cornell-logo');
 almaMater.addEventListener('click', (e) => {
-    if (musicPlaying == false) {
+    if (musicPlaying === false) {
         cornellMp3.play();
         musicPlaying = true;
         playIcon.classList.toggle('fa-circle-play');
@@ -171,6 +169,21 @@ const colorObj = {
     cha2: "#7912a1",
  }
 
+ const plusMinus = {
+    str: {title: "STRENGTH", positives: ["Lifted weights in college"], negatives:["Stopped lifting weights after college"]},
+    dex: {title: "DEXTERITY", positives: ["High school violinist", "Played beer league ice hockey"], negatives:["Bangs shins into stuff a lot"]},
+    con: {title: "CONSTITUTION", positives: ["Thinks he's unbreakable, like the Bruce Willis movie", "Reasonably healthy, all things considered"], negatives:["Picky eater", "Four eye surgeries"]},
+    int: {title: "INTELLIGENCE", positives: ["Loves to learn", "Really good at tests"], negatives:["Permanent ABD (All but dissertation)"]},
+    wis: {title: "WISDOM", positives: ["Married up", "Dog owner"], negatives:["Beagle owner"]},
+    cha: {title: "CHARISMA", positives: ["Mentor to thousands of students"], negatives:["Reserved"]},
+    str2: {title: "STRENGTH", positives: ["Lifted weights in college"], negatives:["Stopped lifting weights after college"]},
+    dex2: {title: "DEXTERITY", positives: ["High school violinist", "Played beer league ice hockey"], negatives:["Bangs shins into stuff a lot"]},
+    con2: {title: "CONSTITUTION", positives: ["Thinks he's unbreakable, like the Bruce Willis movie", "Reasonably healthy, all things considered"], negatives:["Picky eater", "Four eye surgeries"]},
+    int2: {title: "INTELLIGENCE", positives: ["Loves to learn", "Really good at tests"], negatives:["Permanent ABD (All but dissertation)"]},
+    wis2: {title: "WISDOM", positives: ["Married up", "Dog owner"], negatives:["Beagle owner"]},
+    cha2: {title: "CHARISMA", positives: ["Mentor to thousands of students"], negatives:["Reserved"]},
+}
+
 const attrPopup = document.querySelector('.attr-popup');
 const bulletContainer = document.querySelector('.bullet-container')
 const handleAttribute = (e) => {
@@ -298,10 +311,13 @@ function playDread() {
 }
 
 door.addEventListener('mouseover', (e) => {
-    cornellMp3.pause();
-    musicPlaying = false;
-    playIcon.classList.toggle('fa-circle-play');
-    playIcon.classList.toggle('fa-circle-pause');
+    if (musicPlaying === true) {
+        cornellMp3.pause();
+        cornellMp3.currentTime = 0
+        musicPlaying = false;
+        playIcon.classList.toggle('fa-circle-play');
+        playIcon.classList.toggle('fa-circle-pause');
+}
     playDread();
 });
 
