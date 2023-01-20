@@ -233,18 +233,6 @@ attributes.forEach((attribute) => {
     attribute.addEventListener('click', (e) => handleAttribute(e));
 })
 
-const subjects = document.querySelector('#subjects');
-const tutoringMessage = document.querySelector('#tutoring-message');
-subjects.addEventListener('mouseover', () => {
-    tutoringMessage.classList.add('tutoring-message')
-    tutoringMessage.textContent = "Click here to learn more!"
-})
-
-subjects.addEventListener('mouseout', () => {
-    tutoringMessage.classList.remove('tutoring-message')
-    tutoringMessage.textContent = '\xa0'
-})
-
 let x, y; 
 
 const torchOn = (pos) => {

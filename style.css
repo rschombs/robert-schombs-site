@@ -276,12 +276,6 @@ img {
     transition-duration: .4s;
 }
 
-#subjects:hover {
-    cursor: pointer;
-    scale: 1.05;
-    border: 4px solid rgba(255,196,46,1);
-}
-
 #education {
     grid-area: 5 / 2 / 8 / 3;
     justify-content: flex-start;
