@@ -120,27 +120,27 @@ jobs.addEventListener('click', (e) => {
 const email = document.querySelector('.email-click');
 const emailText = document.querySelector('#email-popup')
 const emailTitle = document.querySelector('#email-title') 
-email.addEventListener('click', (e) => {
-    modal.classList.toggle('hidden-modal');
-    emailText.classList.toggle('hidden-modal')
-    popup.classList.toggle('hidden-modal')
-    emailTitle.classList.toggle('hidden-modal')
-    charsheet.classList.add('blur');
-    emailText.classList.toggle('activated');
-    const a = 'rob';
-    const b = '@';
-    const c = 'reason';
-    const d = 'prep';
-    const f = '.';
-    const g = 'com';
-    const full = document.createElement('div');
-    full.classList.add('popup-text-line');
-    full.setAttribute('id', 'email-text');
-    full.textContent = a + b + c + d + f + g;
-    emailText.append(full);
-    popup.classList.toggle('activated');
-    emailTitle.classList.toggle('activated');
-})
+// email.addEventListener('click', (e) => {
+//     modal.classList.toggle('hidden-modal');
+//     emailText.classList.toggle('hidden-modal')
+//     popup.classList.toggle('hidden-modal')
+//     emailTitle.classList.toggle('hidden-modal')
+//     charsheet.classList.add('blur');
+//     emailText.classList.toggle('activated');
+//     const a = 'rob';
+//     const b = '@';
+//     const c = 'reason';
+//     const d = 'prep';
+//     const f = '.';
+//     const g = 'com';
+//     const full = document.createElement('div');
+//     full.classList.add('popup-text-line');
+//     full.setAttribute('id', 'email-text');
+//     full.textContent = a + b + c + d + f + g;
+//     emailText.append(full);
+//     popup.classList.toggle('activated');
+//     emailTitle.classList.toggle('activated');
+// })
 
 const iconObj = { 
     str: ["fa-solid", "fa-hand-fist"], 
